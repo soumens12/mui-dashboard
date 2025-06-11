@@ -18,6 +18,9 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import { useState } from 'react';
 import NavProfile from './Header/NavProfile';
 import NavNotification from './Header/NavNotification';
+import { Brightness4, Brightness7 } from '@mui/icons-material';
+import { useTheme } from '@mui/material/styles';
+import { useColorMode } from '../App';
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -68,6 +71,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 export default function Navbar({ toggleDrawer }) {
+
+    //dark mode
+    const theme = useTheme();
+    const colorMode = useColorMode();
 
 
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -189,6 +196,10 @@ export default function Navbar({ toggleDrawer }) {
                             <MoreIcon />
                         </IconButton>
                     </Box>
+
+                    <IconButton color="inherit" onClick={colorMode.toggleColorMode}>
+                        {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+                    </IconButton>
                 </Toolbar>
             </AppBar>
             {renderMobileMenu}
