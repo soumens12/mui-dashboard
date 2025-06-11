@@ -6,13 +6,14 @@ export const getTheme = (mode) =>
             mode,
             ...(mode === 'light'
                 ? {
-                    background: {
-                        default: '#f5f5f5',
+                    primary: {
+                        main: '#6200ee',
+                        contrastText: '#ffffff', // Change to your desired primary color
                     },
                 }
                 : {
-                    background: {
-                        default: '#121212',
+                    secondary: {
+                        main: '#344955', // Change to your desired secondary color
                     },
                 }),
         },
